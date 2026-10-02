@@ -1,0 +1,4 @@
+# Archivos que Cloudflare no debe publicar en casthe.cl
+.git
+.gitignore
+README.md
