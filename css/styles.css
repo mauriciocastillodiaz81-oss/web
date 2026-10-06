@@ -457,6 +457,21 @@ button { cursor: pointer; }
 @keyframes laneDown { to { transform: translateY(20px); } }
 .hero__scroll:hover { color: #fff; }
 
+/* Tablet vertical: la foto apaisada va como franja arriba (cielo y excavadora a la vista)
+   y el texto queda debajo, sobre el degradado oscuro */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  .hero__media { inset: 0 0 auto 0; height: 58vh; height: 58svh; }
+  .hero__media img { object-position: 62% 50%; }
+  .hero__shade {
+    inset: 0 0 auto 0; height: 100vh; height: 100svh;
+    background: linear-gradient(180deg,
+      rgba(11, 15, 18, .5) 0%, rgba(11, 15, 18, 0) 14%, rgba(11, 15, 18, 0) 36%,
+      rgba(11, 15, 18, .85) 52%, #11171C 60%);
+  }
+  .hero__inner { min-height: 100vh; min-height: 100svh; justify-content: flex-end; }
+  .hero__stats { background: var(--asf-900); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+
 /* Notebooks con pantalla baja: la portada completa cabe en la primera vista */
 @media (min-width: 761px) and (max-height: 820px) {
   .hero__inner { padding-top: calc(var(--nav-h) + 22px); padding-bottom: 28px; }
@@ -937,6 +952,12 @@ a.cinfo__item:hover { background: rgba(245, 163, 0, .08); border-color: rgba(245
 .form__note { display: flex; align-items: center; gap: 8px; font-size: .9rem; color: var(--tinta-3); }
 .form__note .ico { width: 18px; height: 18px; color: var(--bosque-700); }
 @media (max-width: 960px) { .contact__grid { grid-template-columns: 1fr; } }
+/* Las columnas pueden encogerse: nada empuja el contenido fuera de la pantalla */
+.contact__grid > *, .machines__grid > *, .about__grid > * { min-width: 0; }
+@media (max-width: 360px) {
+  .form { padding: 22px 18px; }
+  .form__actions .btn { flex-basis: 100%; padding: 0 14px; font-size: 1rem; letter-spacing: .04em; }
+}
 @media (max-width: 560px) { .form__row { grid-template-columns: 1fr; } }
 
 /* ==========================================================================
